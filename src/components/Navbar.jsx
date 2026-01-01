@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router'
 import userIcon from "../assets/user.png"
 import { AuthContext } from '../Provider/AuthProvider'
 import button from 'daisyui/components/button'
+import { toast, ToastContainer } from 'react-toastify'
 
 const Navbar = () => {
  
@@ -10,7 +11,7 @@ const Navbar = () => {
   const handleLogOut = ()=> {
     console.log('Log out hye jabe')
     logOut().then(()=> {
-      console.log('Successfully Sigout')
+      toast('Successfully Sigout')
     }).catch((error)=> {
       console.log(error)
     })
@@ -30,7 +31,7 @@ const Navbar = () => {
 
         {user ? <button type="button" onClick={handleLogOut} className='btn btn-secondary'>Logout</button> :  <Link to="/auth/login" className='btn btn-primary px-10'>Login</Link>}
         
-       
+        <ToastContainer />
       </div>
     </div>
   )
